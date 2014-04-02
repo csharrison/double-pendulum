@@ -46,6 +46,8 @@ function hexToRgba(hex, alpha) {
 function setup(dict){
 	c.width = $("body").width();
 	c.height = window.innerHeight - 50;
+	ctx.fillStyle = "rgb(0,0,0)";
+	ctx.fillRect(0,0,c.width,c.height);
 
 	var points_per_frame;
 
@@ -55,9 +57,6 @@ function setup(dict){
 	var animate, stopAnimate;
 
 	function reset(){
-		ctx.fillStyle = "rgb(0,0,0)";
-		ctx.fillRect(0,0,c.width,c.height);
-
 		pointGen = odeGenerate(params);
 
 		params.zoom = Math.min(c.width, c.height) / (4 * params.L);
@@ -132,9 +131,18 @@ function setup(dict){
 		$("#save").show();
 	});
 	$("#save").click(function(e){
-		c.toBlob(function(blob) {
+		var savedgco = ctx.globalCompositeOperation;
+
+		ctx.globalCompositeOperation = "destination-over";
+
+		ctx.fillStyle = "rgb(0,0,0)";
+		ctx.fillRect(0,0,c.width,c.height);
+
+		c.toBlobHD(function(blob) {
 		    saveAs(blob, "pendulum.png");
-		});
+		}, "image/png");
+
+		ctx.globalCompositeOperation = savedgco;
 	});
 
 	$("input").on('input change', updateParams);
