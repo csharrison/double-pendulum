@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Double Pendulum</title>
+        <meta name="description" content="chaos reigns">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body style="background-color: black;">
+        <div id="controls">
+            <input type="button" id="hideshow" value="hide">
+            <input type="button" id="save" value="save">
+            <input type="button" id="play" value="play">
+            <input type="button" id="clear" value="clear">
+            <br><br>
+            <input type="color" id="C1" value="#FF0000">
+            <label for="C1">1st color</label>
+            <br><br>
+            <input type="color" id="C2" value="#FF0000">
+            <label for="C2">2nd color</label>
+
+            <br><br>
+            <label for="O1">1st Opacity</label>
+            <br>
+            <input type="range" min="0" max="100" step=".1" id="O1">
+            <br>
+            <label for="O1">2nd Opacity</label><br>
+            <input type="range" min="0" max="100" step=".1" id="O2">
+            <br>
+            <label for="trails">Trails</label><br>
+            <input type="range" min="0" max="40" step="1" id="trails">
+
+            <br>
+            <label for="speed">Speed</label><br>
+            <input type="range" min=".1" max="50" step=".1" value="10" id="speed">
+
+            <br>
+            <label for="step">Step</label><br>
+            <input type="range" min=".001" max=".03" step=".0001" value=".01" id="step">
+
+        </div>
+        <canvas id="the_canvas">
+
+        </canvas>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="jquery-1.11.0.min.js"><\/script>')</script>
+        <script src="underscore.js"></script>
+        <script src="FileSaver.js"></script>
+        <script src="canvas-toBlob.js"></script>
+        <script src="odesolve.js"></script>
+
+        <script type="text/javascript">
+            var c=document.getElementById("the_canvas");
+            var ctx=c.getContext("2d");
+            ctx.globalAlpha = 0.5;
+            ctx.globalCompositeOperation = "copy";
+        </script>
+        <script type="text/javascript" src="main.js"></script>
+        <script type="text/javascript">
+        $(document).ready(setup);
+        </script>
+
+    </body>
+</html>

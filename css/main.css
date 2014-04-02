@@ -1,0 +1,7 @@
+#controls{
+	position:fixed;
+}
+
+#controls label{
+	color: gray;
+}
