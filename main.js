@@ -118,6 +118,7 @@ function setup(dict){
 		params.step = parseFloat($("#step").val());
 
 		params.trails = parseInt($("#trails").val(),10);
+		params.fps = parseInt($("#fps").val());
 		reset();
 		animate();
 	}
