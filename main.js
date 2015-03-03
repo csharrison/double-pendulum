@@ -73,7 +73,7 @@ function setup(dict){
 				if(trail >= params.trails){
 					ctx.fillStyle = params.trails == 0 ?
 						"rgba(0,0,0,1)":
-						"rgba(0,0,0,.004)";
+						"rgba(0,0,0,.01)";
 
 					ctx.fillRect(0,0, c.width, c.height);
 					trail = 0;
